@@ -1,0 +1,9 @@
+[package]
+name = "rust-openapi-cicd"
+version = "0.1.0"
+edition = "2021"
+authors = [
+    "Marius Ileana, marile@signicat.com"
+]
+
+[dependencies]
