@@ -1,7 +1,7 @@
 stages:
   - build
 
-rust-latest:
+build and test:
   stage: build
   image: rust:latest
   script:
