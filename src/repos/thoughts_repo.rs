@@ -1,13 +1,10 @@
+use crate::{domain::model::thought::Thought, web_api::handlers::CreateThoughtInput};
+use axum::extract::FromRef;
+use nanoid::nanoid;
 use std::{
-    cell::RefCell,
     collections::HashMap,
     sync::{Arc, Mutex},
 };
-
-use axum::extract::FromRef;
-use nanoid::nanoid;
-
-use crate::{domain::model::thought::Thought, web_api::handlers::CreateThoughtInput};
 
 /// A basic in-memory repository.
 #[derive(FromRef)]

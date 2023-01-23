@@ -33,7 +33,8 @@ async fn main() {
 
     tracing_subscriber::fmt::init();
 
-    let app_cfg = get_config().expect("Failed to load the app config.");
+    // TODO: tbd its usage.
+    let _app_cfg = get_config().expect("Failed to load the app config.");
 
     let app_state = AppState::new(ThoughtsRepo::new());
 
