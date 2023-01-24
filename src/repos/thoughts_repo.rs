@@ -42,3 +42,9 @@ impl ThoughtsRepo {
         res
     }
 }
+
+impl Default for ThoughtsRepo {
+    fn default() -> Self {
+        Self::new()
+    }
+}
