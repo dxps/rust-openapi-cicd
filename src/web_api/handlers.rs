@@ -6,8 +6,6 @@ use serde_json::Value;
 
 use crate::{app::app_state::AppState, domain::model::thought::Thought};
 
-use super::api_error::ApiError;
-
 #[derive(Deserialize, Serialize, Debug)]
 pub struct CreateThoughtInput {
     pub idea: String,
@@ -23,7 +21,7 @@ pub async fn create_thought(
 }
 
 pub async fn get_all_thoughts(
-    State(state): State<AppState>,
-) -> Result<Json<Vec<Thought>>, ApiError> {
-    Ok(Json(state.thoughts_repo.get_all()))
+    State(state): State<Arc<AppState>>,
+) -> (StatusCode, Json<Vec<Thought>>) {
+    (StatusCode::OK, Json(state.thoughts_repo.get_all()))
 }

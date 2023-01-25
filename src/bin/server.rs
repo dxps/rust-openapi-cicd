@@ -1,9 +1,9 @@
-use axum::{routing::post, Router};
+use axum::{routing::get, Router};
 use clap::Parser;
 use rust_openapi_cicd::{
     app::{app_config::get_config, app_state::AppState},
     repos::thoughts_repo::ThoughtsRepo,
-    web_api::handlers::create_thought,
+    web_api::handlers::{create_thought, get_all_thoughts},
 };
 use std::{
     net::{IpAddr, Ipv6Addr, SocketAddr},
@@ -57,7 +57,7 @@ fn routes(state: AppState) -> Router {
     let cors_layer = CorsLayer::new().allow_origin(Any);
 
     Router::new()
-        .route("/thoughts", post(create_thought))
+        .route("/thoughts", get(get_all_thoughts).post(create_thought))
         .layer(tracing_layer)
         .layer(cors_layer)
         .with_state(Arc::new(state))
